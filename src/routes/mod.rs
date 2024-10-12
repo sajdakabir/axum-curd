@@ -3,6 +3,7 @@ mod mirror_body_string;
 mod mirror_body_json;
 mod path_variables;
 mod query_params;
+mod mirror_custion_hearder;
 
 use axum::{routing::{get, post}, Router};
 use hello_world::hello_world;
@@ -10,6 +11,7 @@ use mirror_body_string::mirror_body_string;
 use mirror_body_json::mirror_body_json;
 use path_variables::{hard_coded, path_variable};
 use query_params::query_params;
+use mirror_custion_hearder:: mirror_custion_hearder;
 
 pub fn create_route()-> Router{
     Router::new().route("/hello", get(hello_world))
@@ -18,4 +20,5 @@ pub fn create_route()-> Router{
                 .route("/path_variable/:id", get(path_variable))
                 .route("/path_variable/100", get(hard_coded))
                 .route("/queary", get(query_params))
+                .route("/header", get(mirror_custion_hearder))
 }
